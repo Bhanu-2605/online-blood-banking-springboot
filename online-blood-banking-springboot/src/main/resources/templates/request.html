@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Request Blood</title></head>
+<body>
+<h2>Request Blood</h2>
+<div th:if="${msg}" th:text="${msg}" style="color:green"></div>
+<form action="/blood/request" method="post">
+ User ID (from login in demo): <input name="userId"/><br/>
+ Blood Group: <input name="bloodGroup"/><br/>
+ Units: <input name="unitsRequested" type="number" value="1"/><br/>
+ <input type="submit" value="Request"/>
+</form>
+</body>
+</html>

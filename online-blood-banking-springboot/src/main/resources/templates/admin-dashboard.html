@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Admin Dashboard</title></head>
+<body>
+<h2>Admin Dashboard</h2>
+<h3>Stock</h3>
+<table border="1">
+ <tr><th>Blood Group</th><th>Units</th></tr>
+ <tr th:each="s : ${stocks}">
+   <td th:text="${s.bloodGroup}"></td>
+   <td th:text="${s.unitsAvailable}"></td>
+ </tr>
+</table>
+
+<h3>Add Stock</h3>
+<form action="/admin/stock/add" method="post">
+ Blood Group: <input name="bloodGroup"/><br/>
+ Units to add: <input name="units" type="number" value="5"/><br/>
+ <input type="submit" value="Add"/>
+</form>
+
+<h3>Pending Requests</h3>
+<table border="1">
+ <tr><th>ID</th><th>User</th><th>Group</th><th>Units</th><th>Action</th></tr>
+ <tr th:each="r : ${requests}">
+   <td th:text="${r.id}"></td>
+   <td th:text="${r.userId}"></td>
+   <td th:text="${r.bloodGroup}"></td>
+   <td th:text="${r.unitsRequested}"></td>
+   <td>
+     <form th:action="@{'/admin/request/' + ${r.id} + '/approve'}" method="post" style="display:inline">
+       <button type="submit">Approve</button>
+     </form>
+   </td>
+ </tr>
+</table>
+</body>
+</html>

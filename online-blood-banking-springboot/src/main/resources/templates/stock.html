@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Stock</title></head>
+<body>
+<h2>Current Blood Stock</h2>
+<table border="1">
+ <tr><th>Blood Group</th><th>Units</th></tr>
+ <tr th:each="s : ${stocks}">
+   <td th:text="${s.bloodGroup}">BG</td>
+   <td th:text="${s.unitsAvailable}">0</td>
+ </tr>
+</table>
+</body>
+</html>
